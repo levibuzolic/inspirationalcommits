@@ -4,8 +4,8 @@ require 'lolcommits/platform'
 module Lolcommits
   class Runner
     attr_accessor :capture_delay, :capture_stealth, :capture_device, :message,
-                  :sha, :snapshot_loc, :main_image, :config, :font, :git_info,
-                  :capture_animate
+                  :sha, :snapshot_loc, :main_image, :config, :font, :font2,
+                  :git_info, :capture_animate
 
     include Methadone::CLILogging
 
@@ -49,7 +49,7 @@ module Lolcommits
         # do native plugins that need to happen immediately after capture and
         # resize this is effectively the "image processing" phase for now,
         # reserve just for us and handle manually...?
-        Lolcommits::Loltext.new(self).execute_postcapture
+        Lolcommits::Inspirationaltext.new(self).execute_postcapture
 
         # do native plugins that need to happen after capture
         plugins_for(:postcapture).each do |plugin|

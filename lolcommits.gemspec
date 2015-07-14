@@ -3,18 +3,18 @@ $LOAD_PATH.push File.expand_path('../lib', __FILE__)
 require 'lolcommits/version'
 
 Gem::Specification.new do |s|
-  s.name        = 'lolcommits'
+  s.name        = 'inspirationalcommits'
   s.version     = Lolcommits::VERSION
-  s.authors     = ['Matthew Rothenberg',    'Matt Hutchinson']
-  s.email       = ['mrothenberg@gmail.com', 'matt@hiddenloop.com']
-  s.homepage    = 'http://mroth.github.com/lolcommits/'
+  s.authors     = ['Matthew Rothenberg',    'Matt Hutchinson',     'Levi Buzolic']
+  s.email       = ['mrothenberg@gmail.com', 'matt@hiddenloop.com', 'levibuzolic@gmail.com']
+  s.homepage    = 'http://inspirationalcommits.github.io/'
   s.license     = 'LGPL-3'
-  s.summary     = 'Capture webcam image on git commit for lulz.'
+  s.summary     = 'Capture webcam image on git commit for inspiration.'
 
   s.description = <<-EOF
-  lolcommits takes a snapshot with your webcam every time you git commit code,
-  and archives a lolcat style image with it. It's selfies for software
-  developers. `git blame` has never been so much fun.
+  inspirationalcommits takes a snapshot with your webcam every time you git
+  commit code, and archives a inspirational style image with it. It's selfies
+  for software developers. `git blame` has never been so much fun.
   EOF
 
   s.files         = `git ls-files`.split("\n")

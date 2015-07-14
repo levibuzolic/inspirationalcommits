@@ -19,6 +19,7 @@ require 'lolcommits/plugin'
 require 'lolcommits/platform'
 
 require 'lolcommits/plugins/loltext'
+require 'lolcommits/plugins/inspirationaltext'
 require 'lolcommits/plugins/dot_com'
 require 'lolcommits/plugins/tranzlate'
 require 'lolcommits/plugins/lol_twitter'
