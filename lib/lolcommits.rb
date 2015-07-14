@@ -18,15 +18,9 @@ require 'lolcommits/installation'
 require 'lolcommits/plugin'
 require 'lolcommits/platform'
 
-require 'lolcommits/plugins/loltext'
-require 'lolcommits/plugins/inspirationaltext'
-require 'lolcommits/plugins/dot_com'
-require 'lolcommits/plugins/tranzlate'
-require 'lolcommits/plugins/lol_twitter'
-require 'lolcommits/plugins/uploldz'
-require 'lolcommits/plugins/lolsrv'
-require 'lolcommits/plugins/lol_yammer'
-require 'lolcommits/plugins/lol_protonet'
+Dir[File.dirname(__FILE__) + '/lolcommits/plugins/*.rb'].each do |file|
+  require file
+end
 
 # require runner after all the plugins have been required
 require 'lolcommits/runner'

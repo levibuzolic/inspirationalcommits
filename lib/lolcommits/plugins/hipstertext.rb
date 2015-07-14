@@ -1,12 +1,14 @@
 # -*- encoding : utf-8 -*-
 module Lolcommits
-  class Inspirationaltext < Plugin
+  class Hipstertext < Plugin
+    COLORS = ["#2e4970", "#674685", "#ca242f", "#1e7882", "#2884ae", "#4ba000", "#187296", "#7e231f", "#017d9f", "#e52d7b", "#0f5eaa", "#e40087", "#5566ac", "#ed8833", "#f8991c", "#408c93", "#ba9109"]
+
     # enabled by default (if no configuration exists)
     def enabled?
       !configured? || super
     end
 
-    def run_postcapture
+    def run
       font_location_1 = File.join(
         Configuration::LOLCOMMITS_ROOT,
         'vendor',
@@ -22,26 +24,32 @@ module Lolcommits
       )
 
       debug 'Annotating image via MiniMagick'
-      image = MiniMagick::Image.open(runner.main_image)
 
       message = clean_msg(runner.message).upcase
       sha = runner.sha
 
+      image = MiniMagick::Image.open(runner.main_image)
+
       image.combine_options do |c|
-        c.gravity 'Center'
-        c.fill 'white'
-        c.pointsize(runner.animate? ? '20' : '30')
-        c.interline_spacing '-9'
+        c.fill COLORS.sample
+        c.colorize 50
+      end
+
+      image.combine_options do |c|
+        c.pointsize(runner.animate? ? '15' : '30')
+        c.size '540x380'
         c.font font_location_1
-        c.annotate '+0-20', message
+        c.fill 'white'
+        c.gravity 'Center'
+        c.draw "text 0,0 \"#{message}\""
       end
 
       image.combine_options do |c|
         c.gravity 'South'
         c.fill 'white'
-        c.pointsize(runner.animate? ? '15' : '25')
+        c.pointsize(runner.animate? ? '10' : '20')
         c.font font_location_2
-        c.annotate '+0+20', sha
+        c.draw "text 0,20 \"#{sha}\""
       end
 
       debug "Writing changed file to #{runner.main_image}"
@@ -49,7 +57,11 @@ module Lolcommits
     end
 
     def self.name
-      'inspirationaltext'
+      'hipstertext'
+    end
+
+    def self.runner_order
+      :process
     end
 
     private

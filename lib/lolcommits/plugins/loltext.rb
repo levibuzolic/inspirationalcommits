@@ -11,7 +11,7 @@ module Lolcommits
       !configured? || super
     end
 
-    def run_postcapture
+    def run
       font_location = @font_location || File.join(Configuration::LOLCOMMITS_ROOT,
                                                   'vendor',
                                                   'fonts',
@@ -46,6 +46,10 @@ module Lolcommits
 
     def self.name
       'loltext'
+    end
+
+    def self.runner_order
+      :process
     end
 
     private
